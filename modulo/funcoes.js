@@ -16,7 +16,7 @@
 ******************************** BIBLIOTECAS UTILIZADAS *************************************
 
 ********************************************************************************************/
-
+ const MESSAGE_ERRO = {status: false, status_code: 500, development: "Kauan Lopes Pereira"}
 
 
 // Retorna todos os estados
