@@ -73,4 +73,6 @@ function getCidadesBySigla(sigla) {
 
 }
 
-getAllEstados()
+module.exports = {
+    getAllEstados
+}
