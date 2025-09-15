@@ -31,14 +31,21 @@ const dados = require('./estados_cidades.js')
 
 // Retorna todos os estados
 function getAllEstados() {
-    let message = {
-        status: true, status_code: 200, development: "Kauan Lopes Pereira", uf: []}
-
+    // Criação do json de resposta da função
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira", uf: [] }
+    // Comando para analisar os dados e retornar as siglas presentes no json listaDeEstados
     dados.listaDeEstados.estados.forEach(function (item) {
         message.uf.push(item.sigla)
     })
+    // Criação do atributo quantidade no json message
     message.quantidade = message.uf.length
-    console.log(message)
+    //
+    if (message.uf.length > 0) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
+
 }
 
 // Retorna um estado pesquisando pela sigla
