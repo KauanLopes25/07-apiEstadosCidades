@@ -5,7 +5,7 @@
 a API de estados e cidades
 * Autor: Kauan Lopes Pereira
 * Data: 15/09/2025
-* Versão: 1.0.0.0
+* Versão: 1.1.09.25
 ********************************************************************************************/
 
 /* Comentário em bloco */
@@ -33,7 +33,7 @@ const cors = require('cors')
 // Responsável por gerenciar a chegada dos dados da api com o front
 const bodyParser = require('body-parser')
 // Importação do arquivo de funcões da API
-const funcoes = require('./modulo/funcoes.js')
+const dados = require('./modulo/funcoes.js')
 
 // Retorna a porta do servidor local ou colocamos uma porta local
 const PORT = process.PORT || 8080
@@ -51,5 +51,16 @@ app.use((request, response, next)=>{
 
 // ENDPOINTS
 app.get('/v1/estados', function(request, response){
-    funcoes.getAllEstados
+    // Pesquisa na função de estados
+    let estados = dados.getAllEstados()
+
+    // Retorno o status code
+    response.status(estados.status_code)
+    // Retorna o JSON
+    response.json(estados)
+})
+
+// Start na API
+app.listen(PORT, function(){
+    console.log('API aguardando requisições...')
 })

@@ -4,7 +4,7 @@
 * Objetivo: Arquivo de funções para gerenciar a API de estados e cidades.
 * Autor: Kauan Lopes Pereira
 * Data: 15/09/2025
-* Versão: 1.0.0.0
+* Versão: 1.1.09.25
 ********************************************************************************************/
 
 /* Comentário em bloco */
@@ -31,8 +31,10 @@ const dados = require('./estados_cidades.js')
 
 // Retorna todos os estados
 function getAllEstados() {
+    // Variável de base para o cabeçalho da API
     // Criação do json de resposta da função
     let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira", uf: [] }
+    // Loop
     // Comando para analisar os dados e retornar as siglas presentes no json listaDeEstados
     dados.listaDeEstados.estados.forEach(function (item) {
         message.uf.push(item.sigla)
