@@ -68,7 +68,6 @@ function getEstadoBySigla(sigla) {
     }
 }
 
-console.log(getEstadoBySigla('sp'))
 // Retorna a capital referente a um estado pesquisando pela sigla
 function getCapitalBySigla(sigla) {
 
@@ -90,5 +89,6 @@ function getCidadesBySigla(sigla) {
 }
 
 module.exports = {
-    getAllEstados
+    getAllEstados,
+    getEstadoBySigla
 }

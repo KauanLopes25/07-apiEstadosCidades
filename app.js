@@ -62,6 +62,13 @@ app.get('/v1/estados', function(request, response){
 
 app.get('/v1/estado/:uf', function(request, response){
     let sigla = request.params.uf
+
+    let estado = dados.getEstadoBySigla(sigla)
+
+    response.status(estado.status_code)
+    
+    response.json(estado)
+    
 })
 
 
