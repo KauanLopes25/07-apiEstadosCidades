@@ -52,9 +52,23 @@ function getAllEstados() {
 
 // Retorna um estado pesquisando pela sigla
 function getEstadoBySigla(sigla) {
+    let uf = sigla.toUpperCase()
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
 
+    let estado = dados.listaDeEstados.estados.find(estado => estado.sigla === uf)
+    message.uf = estado.sigla
+    message.nome = estado.nome
+    message.capital = estado.capital
+    message.regiao = estado.regiao
+
+    if (message.uf) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
 }
 
+console.log(getEstadoBySigla('sp'))
 // Retorna a capital referente a um estado pesquisando pela sigla
 function getCapitalBySigla(sigla) {
 

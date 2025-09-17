@@ -60,6 +60,19 @@ app.get('/v1/estados', function(request, response){
     response.json(estados)
 })
 
+app.get('/v1/estado/:uf', function(request, response){
+    let sigla = request.params.uf
+})
+
+
+// app.get('/v1/estados/regiao', function(request, response){
+//     let sigla = request.query.uf
+//     let estado = request.query.estado
+//     let regiao = request.query.regiao
+//     console.log(sigla)
+//     console.log(estado)
+//     console.log(regiao)
+// })
 // Start na API
 app.listen(PORT, function(){
     console.log('API aguardando requisições...')
