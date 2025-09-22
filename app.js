@@ -71,7 +71,7 @@ app.get('/v1/estado/:uf', function(request, response){
     
 })
 
-
+// Exemplo do profesor Marcel
 // app.get('/v1/estados/regiao', function(request, response){
 //     let sigla = request.query.uf
 //     let estado = request.query.estado
@@ -81,6 +81,10 @@ app.get('/v1/estado/:uf', function(request, response){
 //     console.log(regiao)
 // })
 // Start na API
+
+
+
+
 app.listen(PORT, function(){
     console.log('API aguardando requisições...')
 })

@@ -14,12 +14,11 @@
 ********************************* COMANDOS UTILIZADOS ***************************************
 * forEach - Método de um array que percorre todos os indices.
 * push - Método de um array para adicionar elementos dentro de um array.
-
+* find - Método de um array para procurar um elemento especifico pelo conteudo.
 ************************************** OBSERVAÇÕES ******************************************
 * Todo array possui um indice, e para acessar um indice devemos dizer qual a sua posição [0],
 [3] ou [n], seria a posição em que aquele elemento se encontra dentro de todo array.
-* Todo Json pode ser acessado com ".nomeAtributo", 
-
+* Todo Json pode ser acessado com ".nomeAtributo".
 ******************************** BIBLIOTECAS UTILIZADAS *************************************
 
 ********************************************************************************************/
@@ -54,14 +53,17 @@ function getAllEstados() {
 function getEstadoBySigla(sigla) {
     let uf = sigla.toUpperCase()
     let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
-
+    // Busca pela sigla no banco da dados
     let estado = dados.listaDeEstados.estados.find(estado => estado.sigla === uf)
-    message.uf = estado.sigla
-    message.nome = estado.nome
-    message.capital = estado.capital
-    message.regiao = estado.regiao
-
-    if (message.uf) {
+    // Criação da mensagem de resposta
+    if (estado) {
+        message.uf = estado.sigla
+        message.nome = estado.nome
+        message.capital = estado.capital
+        message.regiao = estado.regiao
+    }
+    // Envio da mensagem de resposta
+    if (estado) {
         return message
     } else {
         return MESSAGE_ERRO
