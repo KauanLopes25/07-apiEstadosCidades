@@ -71,6 +71,17 @@ app.get('/v1/estado/:uf', function(request, response){
     
 })
 
+app.get('/v1/estado/capital/:uf', function(request, response){
+    let sigla = request.params.uf
+
+    let estado = dados.getCapitalBySigla(sigla)
+
+    response.status(estado.status_code)
+    
+    response.json(estado)
+    
+})
+
 // Exemplo do profesor Marcel
 // app.get('/v1/estados/regiao', function(request, response){
 //     let sigla = request.query.uf
