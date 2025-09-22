@@ -91,9 +91,30 @@ function getCapitalBySigla(sigla) {
 }
 // Retorna todos os estados presentes em uma localidade pesquisando pela região
 function getEstadosByRegiao(regiao) {
-
+    // Formatando a região para o padrão do atributo regiao do banco de dados
+    let area = regiao
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
+    // Busca pela regiao no banco da dados
+    let estado = dados.listaDeEstados.estados.filter(estado => estado.regiao === area)
+    // Criação da mensagem de resposta
+    if (estado.length > 0) {
+        message.regiao = area
+        message.estados = []
+        for (let i = 0; i < estado.length; i++){
+            let estadoRegiao = {}
+            estadoRegiao.uf = estado[i].sigla
+            estadoRegiao.descricao = estado[i].nome
+            message.estados.push(estadoRegiao)
+        }   
+    }
+    // Envio da mensagem de resposta
+    if (estado != []) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
 }
-
+console.log(getEstadosByRegiao('Centro-Oeste'))
 // Retorna uma lista de estados referenta as capitais do pais
 function getVerifyCapitaisDoPais() {
 
