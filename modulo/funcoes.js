@@ -58,7 +58,7 @@ function getEstadoBySigla(sigla) {
     // Criação da mensagem de resposta
     if (estado) {
         message.uf = estado.sigla
-        message.nome = estado.nome
+        message.descricao = estado.nome
         message.capital = estado.capital
         message.regiao = estado.regiao
     }
@@ -72,9 +72,23 @@ function getEstadoBySigla(sigla) {
 
 // Retorna a capital referente a um estado pesquisando pela sigla
 function getCapitalBySigla(sigla) {
-
+    let uf = sigla.toUpperCase()
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
+    // Busca pela sigla no banco da dados
+    let estado = dados.listaDeEstados.estados.find(estado => estado.sigla === uf)
+    // Criação da mensagem de resposta
+    if (estado) {
+        message.uf = estado.sigla
+        message.descricao = estado.nome
+        message.capital = estado.capital
+    }
+    // Envio da mensagem de resposta
+    if (estado) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
 }
-
 // Retorna todos os estados presentes em uma localidade pesquisando pela região
 function getEstadosByRegiao(regiao) {
 
@@ -92,5 +106,6 @@ function getCidadesBySigla(sigla) {
 
 module.exports = {
     getAllEstados,
-    getEstadoBySigla
+    getEstadoBySigla,
+    getCapitalBySigla
 }
