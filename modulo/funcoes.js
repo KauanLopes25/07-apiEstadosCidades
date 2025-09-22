@@ -114,7 +114,6 @@ function getEstadosByRegiao(regiao) {
         return MESSAGE_ERRO
     }
 }
-console.log(getEstadosByRegiao('Centro-Oeste'))
 // Retorna uma lista de estados referenta as capitais do pais
 function getVerifyCapitaisDoPais() {
 
@@ -128,5 +127,6 @@ function getCidadesBySigla(sigla) {
 module.exports = {
     getAllEstados,
     getEstadoBySigla,
-    getCapitalBySigla
+    getCapitalBySigla,
+    getEstadosByRegiao
 }
