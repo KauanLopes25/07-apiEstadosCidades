@@ -50,6 +50,7 @@ app.use((request, response, next)=>{
 })
 
 // ENDPOINTS
+// 1°
 app.get('/v1/estados', function(request, response){
     // Pesquisa na função de estados
     let estados = dados.getAllEstados()
@@ -59,7 +60,7 @@ app.get('/v1/estados', function(request, response){
     // Retorna o JSON
     response.json(estados)
 })
-
+// 2°
 app.get('/v1/estado/:uf', function(request, response){
     let sigla = request.params.uf
 
@@ -70,7 +71,7 @@ app.get('/v1/estado/:uf', function(request, response){
     response.json(estado)
     
 })
-
+// 3°
 app.get('/v1/estado/capital/:uf', function(request, response){
     let sigla = request.params.uf
 
@@ -81,7 +82,7 @@ app.get('/v1/estado/capital/:uf', function(request, response){
     response.json(estado)
     
 })
-
+// 4°
 app.get('/v1/estado/regiao/:regiao', function(request, response){
     let regiao = request.params.regiao
 
@@ -90,6 +91,16 @@ app.get('/v1/estado/regiao/:regiao', function(request, response){
     response.status(estado.status_code)
     
     response.json(estado)
+    
+})
+
+app.get('/v1/estado/capitais', function(request, response){
+
+    let capitais = dados.getVerifyCapitaisDoPais()
+
+    response.status(capitais.status_code)
+    
+    response.json(capitais)
     
 })
 
