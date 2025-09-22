@@ -25,6 +25,7 @@
 // Mensagem de erro
 const MESSAGE_ERRO = { status: false, status_code: 500, development: "Kauan Lopes Pereira" }
 
+const { json } = require('body-parser')
 // Importação dos dados de estados e cidades
 const dados = require('./estados_cidades.js')
 
@@ -100,12 +101,12 @@ function getEstadosByRegiao(regiao) {
     if (estado.length > 0) {
         message.regiao = area
         message.estados = []
-        for (let i = 0; i < estado.length; i++){
+        for (let i = 0; i < estado.length; i++) {
             let estadoRegiao = {}
             estadoRegiao.uf = estado[i].sigla
             estadoRegiao.descricao = estado[i].nome
             message.estados.push(estadoRegiao)
-        }   
+        }
     }
     // Envio da mensagem de resposta
     if (estado != []) {
@@ -116,7 +117,28 @@ function getEstadosByRegiao(regiao) {
 }
 // Retorna uma lista de estados referenta as capitais do pais
 function getVerifyCapitaisDoPais() {
-
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
+    let estado = dados.listaDeEstados.estados.filter(estado => estado.capital_pais != undefined)
+    if (estado.length > 0) {
+        message.capitais = []
+        for (let i = 0; i < estado.length; i++) {
+            let capitais = {}
+            capitais.capital_atual = estado[i].capital_pais.capital
+            capitais.uf = estado[i].sigla
+            capitais.descricao = estado[i].nome
+            capitais.capital = estado[i].capital
+            capitais.regiao = estado[i].regiao
+            capitais.capital_pais_ano_inicio = estado[i].capital_pais.ano_inicio
+            capitais.capital_pais_ano_termino = estado[i].capital_pais.ano_fim
+            message.capitais.push(capitais)
+        }  
+    }
+    // Envio da mensagem de resposta
+    if (estado != []) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
 }
 
 // Retorna uma lista de cidades pesquisando pela sigla do estado
@@ -128,5 +150,6 @@ module.exports = {
     getAllEstados,
     getEstadoBySigla,
     getCapitalBySigla,
-    getEstadosByRegiao
+    getEstadosByRegiao,
+    getVerifyCapitaisDoPais
 }
