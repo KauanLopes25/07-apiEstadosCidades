@@ -93,8 +93,8 @@ app.get('/v1/estado/regiao/:regiao', function(request, response){
     response.json(estado)
     
 })
-
-app.get('/v1/estado/capitais', function(request, response){
+// 5°
+app.get('/v1/estados/capitais', function(request, response){
 
     let capitais = dados.getVerifyCapitaisDoPais()
 
