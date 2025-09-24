@@ -131,7 +131,7 @@ function getVerifyCapitaisDoPais() {
             capitais.capital_pais_ano_inicio = estado[i].capital_pais.ano_inicio
             capitais.capital_pais_ano_termino = estado[i].capital_pais.ano_fim
             message.capitais.push(capitais)
-        }  
+        }
     }
     // Envio da mensagem de resposta
     if (estado != []) {
@@ -143,7 +143,27 @@ function getVerifyCapitaisDoPais() {
 
 // Retorna uma lista de cidades pesquisando pela sigla do estado
 function getCidadesBySigla(sigla) {
-
+    let uf = sigla.toUpperCase()
+    let message = { status: true, status_code: 200, development: "Kauan Lopes Pereira" }
+    let estado = dados.listaDeEstados.estados.find(estado => estado.sigla === uf)
+    
+    if (estado) {
+        let cidades = estado.cidades
+        message.uf = estado.sigla
+        message.descricao = estado.nome
+        message.quantidade_cidades = estado.cidades.length
+        message.cidades = []
+        for (let i = 0; i < cidades.length; i++) {
+            let cidade = cidades[i].nome
+            message.cidades.push(cidade)
+        }
+    }
+    
+    if (estado != undefined) {
+        return message
+    } else {
+        return MESSAGE_ERRO
+    }
 }
 
 module.exports = {
@@ -151,5 +171,6 @@ module.exports = {
     getEstadoBySigla,
     getCapitalBySigla,
     getEstadosByRegiao,
-    getVerifyCapitaisDoPais
+    getVerifyCapitaisDoPais,
+    getCapitalBySigla
 }
