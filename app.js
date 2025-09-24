@@ -103,7 +103,17 @@ app.get('/v1/estados/capitais', function(request, response){
     response.json(capitais)
     
 })
+// 6°
+app.get('/v1/estados/cidades/:uf', function(request, response){
 
+    let sigla = request.params.uf
+
+    let cidades = dados.getCidadesBySigla(sigla)
+
+    response.status(cidades.status_code)
+    
+    response.json(cidades)
+})
 
 // Exemplo do profesor Marcel
 // app.get('/v1/estados/regiao', function(request, response){

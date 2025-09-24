@@ -172,5 +172,5 @@ module.exports = {
     getCapitalBySigla,
     getEstadosByRegiao,
     getVerifyCapitaisDoPais,
-    getCapitalBySigla
+    getCidadesBySigla
 }
